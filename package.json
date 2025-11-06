@@ -1,0 +1,7 @@
+{
+    "workspaces": ["apps/*", "packages/*"],
+    "scripts": {
+        "dev": "bun run --filter apps/pdf-service dev & bun run --filter apps/reviewer dev",
+        "build": "bun run --filter apps/pdf-service build & bun run --filter apps/reviewer build"
+    }
+}

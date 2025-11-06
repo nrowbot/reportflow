@@ -1,0 +1,20 @@
+{
+  "name": "pdf-service",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
+    "ts-node": "^10.9.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "puppeteer": "^24.29.1"
+  },
+  "scripts": { "dev": "bun run src/server.ts" }
+}
