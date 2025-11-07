@@ -13,6 +13,8 @@ export function GradientProgressBar({ value, label, min = 0, max = 100 }: Gradie
     const safeMax = max === min ? min + 1 : max
     const percent = (clamp(value, min, safeMax) - min) / (safeMax - min)
     const percentValue = Math.round(percent * 100)
+    const fillPercent = percent * 100
+    const gradientMask = `linear-gradient(90deg,#000 0%,#000 ${fillPercent}%,transparent ${fillPercent}%,transparent 100%)`
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -28,15 +30,17 @@ export function GradientProgressBar({ value, label, min = 0, max = 100 }: Gradie
                     overflow: 'hidden'
                 }}
             >
-                <div
-                    style={{
-                        position: 'absolute',
-                        inset: 0,
-                        transformOrigin: 'left center',
-                        transform: `scaleX(${percent})`,
-                        background: 'linear-gradient(90deg,#dc2626,#eab308,#16a34a)'
-                    }}
-                />
+                {fillPercent > 0 && (
+                    <div
+                        style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background: 'linear-gradient(90deg,#dc2626,#eab308,#16a34a)',
+                            maskImage: gradientMask,
+                            WebkitMaskImage: gradientMask
+                        }}
+                    />
+                )}
             </div>
             <span style={{ fontSize: 12, color: '#444', textAlign: 'right' }}>{percentValue}%</span>
         </div>
