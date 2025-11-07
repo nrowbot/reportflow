@@ -1,7 +1,9 @@
 import express from 'express'
+import cors from 'cors'
 import puppeteer from 'puppeteer'
 
 const app = express()
+app.use(cors())
 app.use(express.json({ limit: '4mb' }))
 
 app.post('/pdf', async (req, res) => {

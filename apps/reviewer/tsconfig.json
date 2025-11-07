@@ -23,7 +23,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "report-template": ["../../packages/report-template/src/index.ts"]
     },
 
     // Some stricter flags (disabled by default)

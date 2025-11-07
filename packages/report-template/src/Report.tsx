@@ -1,24 +1,10 @@
 import React from 'react'
+import { GradientProgressBar } from './components/GradientProgressBar'
+import type { DraftBundle, ReportSection } from './types'
 
-
-type KPI = { name: string; value: number; delta?: number }
-
-
-type Section = {
-    id: string
-    title: string
-    text: string
-    chartUrl?: string
+type Props = Pick<DraftBundle, 'clientName' | 'period' | 'kpis'> & {
+    sections: ReportSection[]
 }
-
-
-type Props = {
-    clientName: string
-    period: { start: string; end: string }
-    kpis: KPI[]
-    sections: Section[]
-}
-
 
 export function Report({ clientName, period, kpis, sections }: Props) {
     return (
@@ -30,8 +16,11 @@ export function Report({ clientName, period, kpis, sections }: Props) {
                     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:#111; }
                     h1,h2,h3 { margin: 0 0 8px; }
                     header { margin-bottom: 16px; }
-                    .kpi { display:grid; grid-template-columns: repeat(3,1fr); gap:8px; margin-bottom: 16px; }
-                    .kpi > div{ border:1px solid #eee; padding:8px; border-radius:8px; }
+                    .kpi { display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom: 20px; }
+                    .kpi-card{ border:1px solid #eee; padding:12px; border-radius:12px; background:#fafafa; }
+                    .kpi-card strong{ display:block; margin-bottom:4px; font-size:14px; color:#111; }
+                    .kpi-value{ font-size:24px; font-weight:600; margin-bottom:8px; }
+                    .kpi-delta{ font-size:12px; color:#2563eb; }
                     .section{ page-break-inside: avoid; margin: 16px 0; }
                     img { max-width: 100%; }
                 `}</style>
@@ -45,12 +34,19 @@ export function Report({ clientName, period, kpis, sections }: Props) {
                     <h2>Key Metrics</h2>
                     <div className="kpi">
                         {kpis.map((k) => (
-                        <div key={k.name}>
+                        <div className="kpi-card" key={k.name}>
                             <strong>{k.name}</strong>
-                            <div>
-                                {k.value}
-                                {k.delta != null ? ` (${k.delta >= 0 ? '+' : ''}${k.delta})` : ''}
+                            <div className="kpi-value">
+                                {k.value}%
+                                {k.delta != null ? (
+                                <span className="kpi-delta">
+                                    {' '}
+                                    ({k.delta >= 0 ? '+' : ''}
+                                    {k.delta}%)
+                                </span>
+                                ) : null}
                             </div>
+                            <GradientProgressBar value={k.value} />
                         </div>
                         ))}
                     </div>

@@ -1,23 +1,19 @@
 import { renderToStaticMarkup } from 'react-dom/server'
 import { Report } from './Report'
+import type { DraftBundle, ReportSection, SectionSelection } from './types'
 
-
-export function renderReport(data: any, chosen: Record<string, string>) {
-    const sections = (data.sections || []).map((s: any) => ({
-        id: s.id,
-        title: s.title,
-        chartUrl: s.chartUrl,
-        text: chosen[s.id] ?? s.options?.[0]?.text ?? ''
+export function renderReport(bundle: DraftBundle, chosen: SectionSelection = {}) {
+    const sections: ReportSection[] = (bundle.sections || []).map((section) => ({
+        id: section.id,
+        title: section.title,
+        chartUrl: section.chartUrl,
+        text: chosen[section.id] ?? section.options?.[0]?.text ?? ''
     }))
 
-    const html = '<!doctype html>' +
-    renderToStaticMarkup(
-        Report({
-            clientName: data.clientName,
-            period: data.period,
-            kpis: data.kpis || [],
-            sections
-        }) as any
+    return (
+        '<!doctype html>' +
+        renderToStaticMarkup(
+            <Report clientName={bundle.clientName} period={bundle.period} kpis={bundle.kpis || []} sections={sections} />
+        )
     )
-    return html
 }
