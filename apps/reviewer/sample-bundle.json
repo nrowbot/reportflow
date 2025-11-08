@@ -1,0 +1,136 @@
+{
+  "clientName": "Bright Smiles Dental",
+  "date": "2025-01-01",
+  "kpis": [
+    { "name": "Overall Practice Score", "value": 74 },
+    { "name": "Market Comparison", "value": 68 }
+  ],
+  "sections": [
+    {
+      "id": "practice-score",
+      "title": "What does my practice score mean?",
+      "group": "question",
+      "options": [
+        {
+          "id": "practice-score-1",
+          "text": "Your composite score reflects steady momentum in new patient flow and strong hygiene reappointment habits, putting you ahead of most suburban peers."
+        }
+      ]
+    },
+    {
+      "id": "market-score",
+      "title": "What does my market comparison score mean?",
+      "group": "question",
+      "options": [
+        {
+          "id": "market-score-1",
+          "text": "The market comparison highlights how your recall and case acceptance metrics outperform neighboring practices despite a tighter advertising footprint."
+        }
+      ]
+    },
+    {
+      "id": "accuracy",
+      "title": "How accurate are these scores?",
+      "group": "question",
+      "options": [
+        {
+          "id": "accuracy-1",
+          "text": "Scores blend 24 months of production, scheduling, and marketing data. Confidence is high because data coverage exceeds 92% across all tracked KPIs."
+        }
+      ]
+    },
+    {
+      "id": "profitability-story",
+      "title": "What is the $162,548 more profit about?",
+      "group": "question",
+      "options": [
+        {
+          "id": "profitability-story-1",
+          "text": "Practices in the top decile convert 2.1 more comprehensive cases per week by tightening financing workflows and scripting stronger follow-up calls."
+        }
+      ]
+    },
+    {
+      "id": "summary-get",
+      "title": "Get New Patients Summary",
+      "group": "summary",
+      "options": [
+        {
+          "id": "summary-get-1",
+          "text": "Paid media is producing dependable awareness, but turning more hygiene visits into referral asks could unlock the next growth spurt."
+        }
+      ]
+    },
+    {
+      "id": "summary-rally",
+      "title": "Rally the Team Summary",
+      "group": "summary",
+      "options": [
+        {
+          "id": "summary-rally-1",
+          "text": "Huddles cover production results but rarely reinforce accountability for unscheduled treatment follow-up."
+        }
+      ]
+    },
+    {
+      "id": "summary-obsess",
+      "title": "Obsess over Experience Summary",
+      "group": "summary",
+      "options": [
+        {
+          "id": "summary-obsess-1",
+          "text": "Guests rave about chairside empathy, yet response times to web chats still trail expectations by 18 minutes."
+        }
+      ]
+    },
+    {
+      "id": "summary-work",
+      "title": "Work Toward Excellence Summary",
+      "group": "summary",
+      "options": [
+        {
+          "id": "summary-work-1",
+          "text": "Doctors calibrate every quarter, but assistants rotate instrumentation preferences, creating friction in multi-doctor days."
+        }
+      ]
+    },
+    {
+      "id": "summary-tune",
+      "title": "Tune Operations Summary",
+      "group": "summary",
+      "options": [
+        {
+          "id": "summary-tune-1",
+          "text": "Block scheduling protects high-value morning slots, though late cancellations are still backfilling with hygiene overflow."
+        }
+      ]
+    },
+    {
+      "id": "summary-harvest",
+      "title": "Harvest Results Summary",
+      "group": "summary",
+      "options": [
+        {
+          "id": "summary-harvest-1",
+          "text": "Post-op email cadences work, but adding SMS reminders for whitening touchups could elevate recurring revenue."
+        }
+      ]
+    }
+  ],
+  "growthCategories": [
+    { "id": "get-new", "name": "Get New Patients", "score": 62, "confidence": 78, "scored": 4, "total": 10 },
+    { "id": "rally-team", "name": "Rally the Team", "score": 71, "confidence": 74, "scored": 5, "total": 10 },
+    { "id": "obsess-exp", "name": "Obsess over Experience", "score": 100, "confidence": 81, "scored": 6, "total": 10 },
+    { "id": "work-excellence", "name": "Work Toward Excellence", "score": 67, "confidence": 70, "scored": 5, "total": 10 },
+    { "id": "tune-ops", "name": "Tune Operations", "score": 58, "confidence": 65, "scored": 4, "total": 10 },
+    { "id": "harvest-results", "name": "Harvest Results", "score": 76, "confidence": 79, "scored": 5, "total": 10 }
+  ],
+  "summaryDetails": [
+    { "id": "summary-get", "label": "G", "title": "Get New Patients", "sectionId": "summary-get" },
+    { "id": "summary-rally", "label": "R", "title": "Rally the Team", "sectionId": "summary-rally" },
+    { "id": "summary-obsess", "label": "O", "title": "Obsess over Experience", "sectionId": "summary-obsess" },
+    { "id": "summary-work", "label": "W", "title": "Work Toward Excellence", "sectionId": "summary-work" },
+    { "id": "summary-tune", "label": "T", "title": "Tune Operations", "sectionId": "summary-tune" },
+    { "id": "summary-harvest", "label": "H", "title": "Harvest Results", "sectionId": "summary-harvest" }
+  ]
+}

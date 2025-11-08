@@ -7,13 +7,21 @@ export function renderReport(bundle: DraftBundle, chosen: SectionSelection = {})
         id: section.id,
         title: section.title,
         chartUrl: section.chartUrl,
+        group: section.group,
         text: chosen[section.id] ?? section.options?.[0]?.text ?? ''
     }))
 
     return (
         '<!doctype html>' +
         renderToStaticMarkup(
-            <Report clientName={bundle.clientName} period={bundle.period} kpis={bundle.kpis || []} sections={sections} />
+            <Report
+                clientName={bundle.clientName}
+                date={bundle.date}
+                kpis={bundle.kpis || []}
+                sections={sections}
+                growthCategories={bundle.growthCategories ?? []}
+                summaryDetails={bundle.summaryDetails ?? []}
+            />
         )
     )
 }
