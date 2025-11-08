@@ -1,5 +1,6 @@
 # dependencies (bun install)
 node_modules
+target
 
 # Finder (MacOS) folder config
 .DS_Store

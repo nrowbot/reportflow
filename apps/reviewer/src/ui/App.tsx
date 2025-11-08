@@ -47,6 +47,25 @@ export function App() {
         }
     }
 
+    const finalizeRust = async () => {
+        if (!bundle) return
+        try {
+            const payload = buildRustPayload(bundle, chosen)
+            const resp = await axios.post('http://localhost:4001/pdf', payload, { responseType: 'blob' })
+            const blob = new Blob([resp.data], { type: 'application/pdf' })
+            const url = URL.createObjectURL(blob)
+            setPdfUrl(url)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = 'report-rust.pdf'
+            a.click()
+            window.open(url, '_blank')
+        } catch (err) {
+            console.error(err)
+            alert('Unable to generate the Rust PDF. Ensure the Rust PDF service is running on :4001.')
+        }
+    }
+
     return (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, padding: 16 }}>
             <div>
@@ -97,9 +116,10 @@ export function App() {
                         </div>
                     ))}
 
-                    <button onClick={finalize} style={{ marginTop: 16 }}>
-                        Finalize → PDF
-                    </button>
+                    <div style={{ display: 'flex', gap: 8, marginTop: 16 }}>
+                        <button onClick={finalize}>Chromium PDF</button>
+                        <button onClick={finalizeRust}>Rust PDF (experimental)</button>
+                    </div>
                     </>
                 )}
             </div>
@@ -118,4 +138,50 @@ export function App() {
             </div>
         </div>
     )
+}
+
+function buildRustPayload(bundle: DraftBundle, chosen: SectionSelection) {
+    const sections = (bundle.sections || []).map((section) => {
+        const text = chosen[section.id] ?? section.options?.[0]?.text ?? ''
+        return {
+            id: section.id,
+            title: section.title,
+            group: section.group ?? 'general',
+            text
+        }
+    })
+
+    const sectionLookup = Object.fromEntries(sections.map((section) => [section.id, section]))
+
+    const resolveSummaryText = (detail: NonNullable<DraftBundle['summaryDetails']>[number]) => {
+        return (
+            detail.text ||
+            (detail.sectionId && sectionLookup[detail.sectionId]?.text) ||
+            sectionLookup[detail.id]?.text ||
+            ''
+        )
+    }
+
+    const questions = sections
+        .filter((section) => section.group === 'question')
+        .map((section) => ({ title: section.title, text: section.text }))
+
+    const generalSections = sections
+        .filter((section) => section.group !== 'question' && section.group !== 'summary')
+        .map((section) => ({ title: section.title, text: section.text }))
+
+    const summaryDetails = (bundle.summaryDetails || []).map((detail) => ({
+        label: detail.label,
+        text: resolveSummaryText(detail)
+    }))
+
+    return {
+        clientName: bundle.clientName,
+        date: bundle.date,
+        kpis: bundle.kpis,
+        questions,
+        generalSections,
+        summaryDetails,
+        growthCategories: bundle.growthCategories || []
+    }
 }
