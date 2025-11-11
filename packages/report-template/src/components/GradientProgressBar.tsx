@@ -1,5 +1,5 @@
 import React from 'react'
-import gradientFill from '../assets/gradient-fill-modern.png'
+import gradientFill from '../assets/gradient-fill.png'
 
 const TRACK_BORDER = 'rgba(15,23,42,0.08)'
 const TRACK_BACKGROUND = '#f6f8fb'

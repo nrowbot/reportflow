@@ -39,6 +39,7 @@ export type SummaryDetail = {
     title: string
     sectionId?: string
     text?: string
+    avgProfit?: number
 }
 
 export type DraftBundle = {

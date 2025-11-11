@@ -3,7 +3,7 @@
   "date": "2025-01-01",
   "kpis": [
     { "name": "Overall Practice Score", "value": 74 },
-    { "name": "Market Comparison", "value": 68 }
+    { "name": "Market Comparison Score", "value": 68 }
   ],
   "sections": [
     {
@@ -14,6 +14,10 @@
         {
           "id": "practice-score-1",
           "text": "Your composite score reflects steady momentum in new patient flow and strong hygiene reappointment habits, putting you ahead of most suburban peers."
+        },
+        {
+          "id": "practice-score-2",
+          "text": "Another option"
         }
       ]
     },
@@ -118,7 +122,7 @@
     }
   ],
   "growthCategories": [
-    { "id": "get-new", "name": "Get New Patients", "score": 62, "confidence": 78, "scored": 4, "total": 10 },
+    { "id": "get-new", "name": "Get New Patients", "score": 50, "confidence": 60, "scored": 40, "total": 61 },
     { "id": "rally-team", "name": "Rally the Team", "score": 71, "confidence": 74, "scored": 5, "total": 10 },
     { "id": "obsess-exp", "name": "Obsess over Experience", "score": 100, "confidence": 81, "scored": 6, "total": 10 },
     { "id": "work-excellence", "name": "Work Toward Excellence", "score": 67, "confidence": 70, "scored": 5, "total": 10 },
@@ -126,11 +130,11 @@
     { "id": "harvest-results", "name": "Harvest Results", "score": 76, "confidence": 79, "scored": 5, "total": 10 }
   ],
   "summaryDetails": [
-    { "id": "summary-get", "label": "G", "title": "Get New Patients", "sectionId": "summary-get" },
-    { "id": "summary-rally", "label": "R", "title": "Rally the Team", "sectionId": "summary-rally" },
-    { "id": "summary-obsess", "label": "O", "title": "Obsess over Experience", "sectionId": "summary-obsess" },
-    { "id": "summary-work", "label": "W", "title": "Work Toward Excellence", "sectionId": "summary-work" },
-    { "id": "summary-tune", "label": "T", "title": "Tune Operations", "sectionId": "summary-tune" },
-    { "id": "summary-harvest", "label": "H", "title": "Harvest Results", "sectionId": "summary-harvest" }
+    { "id": "summary-get", "label": "G", "title": "Get New Patients", "sectionId": "summary-get", "avgProfit": 18500 },
+    { "id": "summary-rally", "label": "R", "title": "Rally the Team", "sectionId": "summary-rally", "avgProfit": 9200 },
+    { "id": "summary-obsess", "label": "O", "title": "Obsess over Experience", "sectionId": "summary-obsess", "avgProfit": 14200 },
+    { "id": "summary-work", "label": "W", "title": "Work Toward Excellence", "sectionId": "summary-work", "avgProfit": 7600 },
+    { "id": "summary-tune", "label": "T", "title": "Tune Operations", "sectionId": "summary-tune", "avgProfit": 6400 },
+    { "id": "summary-harvest", "label": "H", "title": "Harvest Results", "sectionId": "summary-harvest", "avgProfit": 21100 }
   ]
 }

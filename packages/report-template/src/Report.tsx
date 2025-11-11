@@ -9,6 +9,11 @@ type Props = Pick<DraftBundle, 'clientName' | 'date' | 'kpis'> & {
 }
 
 const sectionGroup = (section?: ReportSection) => section?.group ?? 'general'
+const currencyFormatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+})
 
 export function Report({ clientName, date, kpis, sections, growthCategories, summaryDetails }: Props) {
     const questionSections = sections.filter((section) => sectionGroup(section) === 'question')
@@ -26,31 +31,41 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                 <meta charSet="utf-8" />
                 <style>{`
                     @page { size: Letter; margin: 0.35in; }
-                    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:#111; font-size:11.5px; line-height:1.25; }
-                    h1 { font-size:21px; margin:0 0 2px; color:#111; }
-                    h2 { font-size:15px; margin:12px 0 2px; color:#111; }
-                    h3 { font-size:13px; margin:12px 0 2px; color:#111; }
-                    header { margin-bottom: 10px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+                    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color:#111; font-size:10px; line-height:1.25; }
+                    h1 { font-size:16px; color:#111; }
+                    h2 { font-size:14px; margin:2px; color:#111; }
+                    h3 { font-size:12px; margin:2px; color:#111; }
+                    p { margin: 2px; }
+                    header { margin-bottom: 4px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
                     header h1{ margin:0; }
                     .header-meta{ text-align:right; font-size:10px; color:#475569; }
-                    .kpi { display:grid; grid-template-columns: repeat(auto-fit,minmax(165px,1fr)); gap:8px; margin-bottom: 6px; }
-                    .kpi-card{ padding:8px; border-radius:8px; background:#f8fafc; }
-                    .kpi-card strong{ display:inline; font-size:11px; color:#111; }
-                    .questions{ margin: 12px 0; display:flex; flex-direction:column; gap:6px; }
+                    .kpi { display:grid; grid-template-columns: repeat(auto-fit,minmax(165px,1fr)); gap:4px; margin-bottom: 4px; }
+                    .kpi-card{ padding:6px; border-radius:8px; background:#f8fafc; }
+                    .kpi-card strong{ display:inline; font-size:10px; color:#111; }
+                    .questions{ margin: 6px 0; display:flex; flex-direction:column; gap:4px; }
                     .question-item{ background:#f8fafc; border-radius:8px; padding:8px 10px; page-break-inside:avoid; }
                     .question-item h4{ margin:0 0 4px; font-size:11px; color:#111; }
-                    .question-item p{ margin:0; color:#111; font-size:10.5px; line-height:1.25; }
-                    .category-table{ width:100%; border-collapse:collapse; margin:10px 0; font-size:10.5px; }
+                    .question-item p{ margin:0; color:#111; font-size:10px; line-height:1.25; }
+                    .category-table{ width:100%; border-collapse:collapse; margin:6px 0; font-size:10px; }
                     .category-table th,.category-table td{ text-align:center; padding:6px; border-bottom:1px solid #e2e8f0; }
                     .category-table th{ font-size:10px; color:#111; background:#f8fafc; }
-                    .category-table td:first-child{ font-weight:600; color:#111; }
+                    .category-table td:first-child{ font-weight:600; color:#111; text-align:left; }
+                    .category-name{ color:#111; font-weight:400; }
+                    .category-initial{ font-weight:700; color:#0f172a; }
+                    .category-note{ font-size:9px; color:#475569; margin:4px 0 12px; text-align: center; }
                     .category-score{ min-width:130px; }
-                    .summary-grid{ display:flex; flex-direction:column; gap:3px; margin:9px 0 16px; }
-                    .summary-item{ display:flex; gap:9px; padding:6px 0; border-bottom:1px solid #e2e8f0; align-items:center; }
-                    .summary-item:last-child{ border-bottom:none; }
-                    .summary-badge{ width:25px; height:25px; border-radius:50%; background:rgba(4,120,87,0.2); color:#065f46; font-weight:600; display:flex; align-items:center; justify-content:center; font-size:12px; flex-shrink:0; border:1px solid rgba(4,120,87,0.3); }
-                    .summary-copy p{ margin:0; font-size:10px; color:#111; line-height:1.25; }
-                    .section{ page-break-inside: avoid; margin: 12px 0; }
+                    .summary-table{ width:100%; border-collapse:collapse; margin:4px 0 4px; font-size:10.5px; }
+                    .summary-table th,.summary-table td{ padding:8px; border-bottom:1px solid #e2e8f0; vertical-align:middle; }
+                    .summary-table th{ font-size:10px; color:#111; background:#f8fafc; text-align:left; }
+                    .summary-focus{ display:flex; align-items:center; gap:6px; }
+                    .summary-badge{ width:25px; height:25px; border-radius:50%; background:rgba(4,120,87,0.15); color:#065f46; font-weight:600; display:flex; align-items:center; justify-content:center; font-size:12px; border:1px solid rgba(4,120,87,0.3); }
+                    .summary-copy{ margin:0; font-size:9.25px; color:#111; line-height:1.3; }
+                    .summary-profit{ text-align:right; font-weight:600; color:#047857; white-space:nowrap; }
+                    .summary-note{ font-size:9px; color:#475569; margin: 0 0 4px; text-align: center; }
+                    .section{ page-break-inside: avoid; margin: 10px 0; }
+                    .profit-callout{ margin:6px 0; padding:6px 8px; border-radius:8px; background:#f0fdf4; color:#065f46; font-size:10px; font-weight:500; border:1px solid rgba(6,95,70,0.2); }
+                    .quote-block{ font-style:italic; color:#111; margin:4px 0 2px; }
+                    .quote-signature{ font-family:"Pacifico","Homemade Apple","Brush Script MT",cursive; font-size:14px; margin:0 0 20px; color:#0f172a; }
                     img { max-width: 100%; }
                 `}</style>
             </head>
@@ -68,6 +83,9 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                             </div>
                         ))}
                     </div>
+                    <p className="profit-callout">
+                        Additional profitability a top 10% practice captures averages <strong>$162,548</strong> per year.
+                    </p>
                     {questionSections.length > 0 && (
                         <>
                             <h2>Key Questions</h2>
@@ -97,7 +115,12 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                                 <tbody>
                                     {growthCategories.map((category) => (
                                         <tr key={category.id}>
-                                            <td>{category.name}</td>
+                                            <td>
+                                                <span className="category-name">
+                                                    <span className="category-initial">{category.name.charAt(0)}</span>
+                                                    {category.name.slice(1)}
+                                                </span>
+                                            </td>
                                             <td>
                                                 <div className="category-score">
                                                     <GradientBar value={category.score} height={10} trackColor="#e2e8f0" />
@@ -111,22 +134,40 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                                     ))}
                                 </tbody>
                             </table>
+                            <p className="category-note">
+                                Score represents only KPIs currently scored. Score will adjust after completion of part 2 and 3 of analysis.
+                            </p>
                         </>
                     )}
 
                     {summaryDetails.length > 0 && (
                         <>
-                            <h3>Summary Details</h3>
-                            <div className="summary-grid">
-                                {summaryDetails.map((detail) => (
-                                    <div className="summary-item" key={detail.id}>
-                                        <div className="summary-badge">{detail.label}</div>
-                                        <div className="summary-copy">
-                                            <p>{resolveSummaryText(detail)}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                            <table className="summary-table">
+                                <thead>
+                                    <tr>
+                                        <th>Summary Details</th>
+                                        <th className="summary-profit">Avg Profit ↗</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {summaryDetails.map((detail) => (
+                                        <tr key={detail.id}>
+                                            <td>
+                                                <div className="summary-focus">
+                                                    <span className="summary-badge">{detail.label}</span>
+                                                    <p className="summary-copy">{resolveSummaryText(detail)}</p>
+                                                </div>
+                                            </td>
+                                            <td className="summary-profit">
+                                                {detail.avgProfit != null ? currencyFormatter.format(detail.avgProfit) : '—'}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                            <p className="summary-note">
+                                * Ask about our Profit Accelerator to turn these projected gains into your actual profit.
+                            </p>
                         </>
                     )}
 
@@ -141,11 +182,12 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                         Learn more about GROWTH Practice Optimization Partnership, the new <u><i>Zero Risk</i></u> way to win in
                         dentistry!
                     </p>
-                    <p>
+                    <blockquote className="quote-block">
                         &quot;We love helping practices double their profitability risk free without having to come up with money out
                         of their pocket. It's a game changer for the practice and unbelievably fulfilling for our team, for practices
-                        that qualify.&quot; Shawn Rowbotham
-                    </p>
+                        that qualify.&quot;
+                    </blockquote>
+                    <p className="quote-signature">Shawn Rowbotham</p>
                 </main>
             </body>
         </html>
