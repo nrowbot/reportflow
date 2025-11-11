@@ -40,7 +40,6 @@ export function App() {
             a.href = url
             a.download = 'report.pdf'
             a.click()
-            window.open(url, '_blank')
         } catch (err) {
             console.error(err)
             alert('Unable to generate the PDF. Ensure the PDF service is running on :3001.')
