@@ -52,20 +52,23 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                     .category-table td:first-child{ font-weight:600; color:#111; text-align:left; }
                     .category-name{ color:#111; font-weight:400; }
                     .category-initial{ font-weight:700; color:#0f172a; }
-                    .category-note{ font-size:9px; color:#475569; margin:4px 0 12px; text-align: center; }
+                    .category-note{ font-size:9px; color:#475569; margin:4px 0 8px; text-align: center; }
                     .category-score{ min-width:130px; }
                     .summary-table{ width:100%; border-collapse:collapse; margin:4px 0 4px; font-size:10.5px; }
                     .summary-table th,.summary-table td{ padding:8px; border-bottom:1px solid #e2e8f0; vertical-align:middle; }
                     .summary-table th{ font-size:10px; color:#111; background:#f8fafc; text-align:left; }
+                    .summary-details-header{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+                    .summary-details-label{ font-weight:600; text-align:left; }
+                    .summary-note-inline{ font-size:9px; color:#475569; text-align:right; white-space:nowrap; }
                     .summary-focus{ display:flex; align-items:center; gap:6px; }
                     .summary-badge{ width:25px; height:25px; border-radius:50%; background:rgba(4,120,87,0.15); color:#065f46; font-weight:600; display:flex; align-items:center; justify-content:center; font-size:12px; border:1px solid rgba(4,120,87,0.3); }
                     .summary-copy{ margin:0; font-size:9.25px; color:#111; line-height:1.3; }
                     .summary-profit{ text-align:right; font-weight:600; color:#047857; white-space:nowrap; }
-                    .summary-note{ font-size:9px; color:#475569; margin: 0 0 4px; text-align: center; }
                     .section{ page-break-inside: avoid; margin: 10px 0; }
                     .profit-callout{ margin:6px 0; padding:6px 8px; border-radius:8px; background:#f0fdf4; color:#065f46; font-size:10px; font-weight:500; border:1px solid rgba(6,95,70,0.2); }
-                    .quote-block{ font-style:italic; color:#111; margin:4px 0 2px; }
-                    .quote-signature{ font-family:"Pacifico","Homemade Apple","Brush Script MT",cursive; font-size:14px; margin:0 0 20px; color:#0f172a; }
+                    .quote-block{ font-style:italic; color:#111; margin:10px 0 2px; line-height: 1.8; }
+                    .quote-text{ display:inline; }
+                    .quote-signature{ font-family:"Zapfino"; font-size:9px; margin:0 0 20px 2rem; color:#111; font-weight:300; font-style:normal; white-space:nowrap; display:inline-block; letter-spacing:0.25px; }
                     img { max-width: 100%; }
                 `}</style>
             </head>
@@ -145,7 +148,12 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                             <table className="summary-table">
                                 <thead>
                                     <tr>
-                                        <th>Summary Details</th>
+                                        <th className="summary-details-header">
+                                            <span className="summary-details-label">Summary Details</span>
+                                            <span className="summary-note-inline">
+                                                * Ask about our Profit Accelerator to turn these projected gains into your actual profit.
+                                            </span>
+                                        </th>
                                         <th className="summary-profit">Avg Profit ↗</th>
                                     </tr>
                                 </thead>
@@ -165,9 +173,6 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                                     ))}
                                 </tbody>
                             </table>
-                            <p className="summary-note">
-                                * Ask about our Profit Accelerator to turn these projected gains into your actual profit.
-                            </p>
                         </>
                     )}
 
@@ -183,11 +188,12 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                         dentistry!
                     </p>
                     <blockquote className="quote-block">
-                        &quot;We love helping practices double their profitability risk free without having to come up with money out
-                        of their pocket. It's a game changer for the practice and unbelievably fulfilling for our team, for practices
-                        that qualify.&quot;
+                        <span className="quote-text">
+                            &quot;We love helping practices double their profitability risk free without having to come up with money out of
+                            their pocket. It's a game changer for the practice and unbelievably fulfilling for our team, for practices that qualify.&quot;
+                        </span>
+                        <span className="quote-signature">Shawn Rowbotham</span>
                     </blockquote>
-                    <p className="quote-signature">Shawn Rowbotham</p>
                 </main>
             </body>
         </html>
