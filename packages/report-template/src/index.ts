@@ -1,4 +1,5 @@
 export { renderReport } from './render'
+export { renderDrilldownReport } from './renderDrilldown'
 export { Report } from './Report'
 export { GradientProgressBar, GradientBar } from './components/GradientProgressBar'
 export * from './types'

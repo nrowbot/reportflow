@@ -52,3 +52,9 @@ export type DraftBundle = {
 }
 
 export type SectionSelection = Record<string, string>
+
+export type DrilldownTable = {
+    title?: string
+    columns: string[]
+    rows: string[][]
+}

@@ -1,0 +1,68 @@
+Practice Analysis - Part 1 - Deep dive - all KPIs,,,,,,
+GROWTH Category,KPIs,Category,Profit Driver,KPI,Score,Description
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,Article Schema Present,,Articles use helpful page code.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,How-To Schema Present,,How-to pages use helpful page code.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,Question Schema Present,,Q&A pages use helpful page code.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,FAQ with Schema,,FAQs use the right page code.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,FAQ Minimum Count,,There are enough FAQ questions.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,Semantic Tags Present,,Headings and HTML are used correctly.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,Medical Terminology Explained,,Medical words are explained simply.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,Plain-Language Indicators,,Writing is easy for anyone to read.
+G, 53 of 53,AI Search Readiness,Long-Term SEO + AI Readiness,FAQ Minimum Length,,FAQ answers are long enough to help.
+G, 53 of 53,Analytics Setup,ROI Measurement,UTM Parameter Usage,,Campaign links use tracking tags.
+G, 53 of 53,Analytics Setup,ROI Measurement,GTM Installed,,Tag Manager is set up.
+G, 53 of 53,Analytics Setup,ROI Measurement,GA4 Installed,,Google Analytics is set up.
+G, 53 of 53,Bookability,New Patient Flow,Booking Flow Friction,,Booking has as few steps as possible.
+G, 53 of 53,Bookability,New Patient Flow,Online Scheduling Present,,Online booking exists.
+G, 53 of 53,Bookability,New Patient Flow,CTA Above the Fold,,A big “Book/Call” button shows without scrolling.
+G, 53 of 53,Bookability,New Patient Flow,Click-to-Call (Mobile),,Tap-to-call works on phones.
+G, 53 of 53,Bookability,New Patient Flow,After-Hours Options,,Options exist for nights or weekends.
+G, 53 of 53,Compliance,Risk Mitigation,Privacy Policy Present,,Privacy policy is easy to find.
+G, 53 of 53,Compliance,Risk Mitigation,HIPAA-Compliant Forms,,Forms keep health info safe.
+G, 53 of 53,Compliance,Risk Mitigation,Accessibility (WCAG),,People with disabilities can use the site.
+G, 53 of 53,Compliance,Risk Mitigation,Cookie Consent,,Cookie banner explains tracking.
+G, 53 of 53,Compliance,Risk Mitigation,SSL Certificate,,Security certificate is valid.
+G, 53 of 53,Content Quality,Trust & Case Acceptance,Service Pages (General),,Basic services are explained clearly.
+G, 53 of 53,Content Quality,Trust & Case Acceptance,Service Pages (Specialty),,Special services are explained clearly.
+G, 53 of 53,Content Quality,Trust & Case Acceptance,Before/After Gallery,,Before/after photos are easy to view.
+G, 53 of 53,Content Quality,Trust & Case Acceptance,Educational Content,,Helpful articles are available.
+G, 53 of 53,Content Quality,Trust & Case Acceptance,Video Content,,"Short, useful videos are available."
+G, 53 of 53,Content Quality,Trust & Case Acceptance,Membership Plan Visibility,,Check site for if practice has a membership plan
+G, 53 of 53,GBP Optimization,Local Discovery,Profile Verification,,Ownership is confirmed.
+G, 53 of 53,GBP Optimization,Local Discovery,Profile Completeness,,All profile sections are complete.
+G, 53 of 53,GBP Optimization,Local Discovery,Number of Google reviews,,Core reputation signal
+G, 53 of 53,GBP Optimization,Local Discovery,Average Star Rating,,Direct patient trust indicator
+G, 53 of 53,GBP Optimization,Local Discovery,Recency of Reviews (last 90 days),,Keeps relevance in local algorithm.
+G, 53 of 53,GBP Optimization,Local Discovery,Photo/Video Volume on GBP,,Google freshness signal
+G, 53 of 53,GBP Optimization,Local Discovery,Posts Frequency,,New posts are added often.
+G, 53 of 53,GBP Optimization,Local Discovery,Messaging Enabled,,Messaging is turned on and checked.
+G, 53 of 53,GBP/Entity Profiles,Local Discovery,GBP Verified,,Google Business Profile is verified.
+G, 53 of 53,GBP/Entity Profiles,Local Discovery,GBP Completeness,,Google Business Profile is filled out.
+G, 53 of 53,GBP/Entity Profiles,Local Discovery,Social Profile – Facebook,,Facebook page is active and linked.
+G, 53 of 53,GBP/Entity Profiles,Local Discovery,Social Profile – Instagram,,Instagram is active and linked.
+G, 53 of 53,GBP/Entity Profiles,Local Discovery,NAP Consistency,,"Name, address, phone match everywhere."
+G, 53 of 53,GBP/Entity Profiles,Local Discovery,Directory Presence (weighted directory list),,Listed on important directories.
+G, 53 of 53,Page Speed Performance,Conversion Rate,"Desktop Performance (each carries Core Web Vitals thresholds for LCP, CLS, INP)",,Fast on computers.
+G, 53 of 53,Page Speed Performance,Conversion Rate,Mobile Performance,,Fast on phones.
+G, 53 of 53,Website Technical,Conversion Rate,HTTPS Enabled,,Site loads securely (lock icon).
+G, 53 of 53,Website Technical,Conversion Rate,Schema – Booking Action,,Special code that marks “Book an appointment.”
+G, 53 of 53,Website Technical,Conversion Rate,Schema – Person (Doctors),,Special code showing each doctor.
+G, 53 of 53,Website Technical,Conversion Rate,Schema – FAQ Page,,Special code for a page of FAQs.
+G, 53 of 53,Website Technical,Conversion Rate,Schema – Dentist Specific,,Special code saying “we’re a dentist.”
+G, 53 of 53,Website Technical,Conversion Rate,Schema – Local Business,,Special code saying “we’re a local business.”
+G, 53 of 53,Website Technical,Conversion Rate,XML Sitemap Present,,A simple list of your pages for Google.
+G, 53 of 53,Website Technical,Conversion Rate,Robots.txt Present,,A tiny file that tells Google what to visit.
+G, 53 of 53,Website Technical,Conversion Rate,Canonical Tags Proper,,Right page is marked as the main one.
+R,6 of 13,AI Search Readiness,Long-Term SEO + AI Readiness,Natural-Language Q&A (FAQ on site),,Plain-talk Q&A is on the site.
+R,6 of 13,AI Search Readiness,Long-Term SEO + AI Readiness,Staff Credentials Visible,,Staff training and licenses are shown.
+R,6 of 13,Analytics Setup,ROI Measurement,Phone Call Event Tracking,,Phone calls are counted.
+R,6 of 13,Bookability,New Patient Flow,Call Tracking Implemented,,Calls are counted with tracking numbers.
+R,6 of 13,GBP Optimization,Local Discovery,Q&A Engagement,,Questions get answered.
+R,6 of 13,GBP Optimization,Local Discovery,Review velocity & quality,,Regularity of reviews and quality
+O,1 of 15,Content Quality,Trust & Case Acceptance,Patient Testimonials,,Real patient reviews are shown.
+W,3 of 10,Bookability,New Patient Flow,Scheduling Vendor Quality,,The booking tool is easy to use.
+W,3 of 10,Content Quality,Trust & Case Acceptance,Media Quality,,Pictures and videos look good and load fast.
+W,3 of 10,GBP Optimization,Local Discovery,Photo & Video Quality and Quantity,,Plenty of high-quality photos.
+T,1 of 18,Analytics Setup,ROI Measurement,Form Submission Tracking,,Form sends are counted.
+H,2 of 9,AI Search Readiness,Long-Term SEO + AI Readiness,Service Explanations – Comprehensive,,Service pages explain everything clearly.
+H,2 of 9,Content Quality,Trust & Case Acceptance,Payment Plan / Financing Availability,,Flexibility for patients 
