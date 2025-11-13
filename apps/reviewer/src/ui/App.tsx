@@ -76,13 +76,13 @@ const buildDrilldownTable = (text: string): DrilldownTable => {
     let title: string | undefined
 
     const firstRow = workingRows[0]
-    const hasSoloFirstCell = firstRow.length <= 1 || firstRow.slice(1).every((cell) => !cell.length)
-    if (hasSoloFirstCell) {
+    const hasSoloFirstCell = firstRow ? firstRow.length <= 1 || firstRow.slice(1).every((cell) => !cell.length) : false
+    if (hasSoloFirstCell && firstRow) {
         title = firstRow[0]
         workingRows = workingRows.slice(1)
     }
 
-    if (!workingRows.length) {
+    if (!workingRows[0]) {
         throw new Error('CSV missing header row')
     }
 
