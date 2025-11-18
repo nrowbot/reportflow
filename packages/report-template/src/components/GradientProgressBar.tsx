@@ -15,6 +15,7 @@ export type GradientProgressBarProps = {
     max?: number
     height?: number
     showHeader?: boolean
+    gradientString?: string
 }
 
 export type GradientBarProps = GradientProgressBarProps & {
@@ -23,6 +24,7 @@ export type GradientBarProps = GradientProgressBarProps & {
     showValue?: boolean
     valueColor?: string
     'aria-label'?: string
+    gradientString?: string
 }
 
 const clamp = (value: number, min: number, max: number) => {
@@ -46,14 +48,16 @@ export function GradientBar({
     rounded = 999,
     showValue = true,
     valueColor = '#111',
-    'aria-label': ariaLabel
+    'aria-label': ariaLabel,
+    gradientString
 }: GradientBarProps) {
     const percent = getPercent(value, min, max)
     const fillPercent = Math.min(100, Math.max(0, Number((percent * 100).toFixed(4))))
     const isFull = fillPercent >= FULL_THRESHOLD
     const remainderPercent = isFull ? 0 : Math.max(0, 100 - fillPercent)
     const clipRight = isFull ? 0 : Math.max(0, remainderPercent - CLIP_PAD_END)
-    const labelLeft = Math.min(Math.max(fillPercent + 8, 8), 93)
+    // const labelLeft = Math.min(Math.max(fillPercent + 8, 8), 93)
+    const labelLeft = Math.min(Math.max(fillPercent + 8, 50), 93)
     const percentValue = Math.round(fillPercent)
     const trackRadius = Math.min(rounded, height / 2)
     const hasFill = fillPercent > 0
@@ -99,7 +103,7 @@ export function GradientBar({
                         pointerEvents: 'none'
                     }}
                 >
-                    {percentValue}%
+                    {gradientString ? gradientString : `${percentValue}%`}
                 </span>
             )}
         </div>
@@ -112,7 +116,8 @@ export function GradientProgressBar({
     min = 0,
     max = 100,
     height = 16,
-    showHeader
+    showHeader,
+    gradientString
 }: GradientProgressBarProps) {
     const headerVisible = showHeader ?? Boolean(label)
 
@@ -121,7 +126,7 @@ export function GradientProgressBar({
             {headerVisible && (
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: '#555' }}>{label}</div>
             )}
-            <GradientBar value={value} min={min} max={max} height={height} aria-label={label} />
+            <GradientBar value={value} min={min} max={max} height={height} aria-label={label} gradientString={gradientString} />
         </div>
     )
 }

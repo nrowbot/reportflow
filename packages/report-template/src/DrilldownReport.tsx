@@ -17,10 +17,21 @@ const sanitizeRows = (columns: string[], rows: string[][]) =>
 
 export function DrilldownReport({ table }: Props) {
     const columns = table.columns || []
-    const normalizedRows = sanitizeRows(columns, table.rows || [])
+    const sanitizedRows = sanitizeRows(columns, table.rows || [])
+    const scoreColumnIndex = columns.findIndex((column) => column.trim().toLowerCase() === 'score')
+    const normalizedRows =
+        scoreColumnIndex === -1
+            ? sanitizedRows
+            : sanitizedRows.filter((row) => {
+                  const cell = row[scoreColumnIndex] ?? ''
+                  return cell.trim().length > 0
+              })
+    const columnKeys = columns.map((column) => column.trim().toLowerCase())
     const displayRows = normalizedRows.map((row, rowIdx) =>
         row.map((cell, colIdx) => {
             if (!cell) return ''
+            const key = columnKeys[colIdx]
+            if (key === 'score') return cell
             const prev = normalizedRows[rowIdx - 1]?.[colIdx]
             return prev === cell ? '' : cell
         })

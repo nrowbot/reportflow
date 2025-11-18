@@ -1,6 +1,7 @@
 export type KPI = {
     name: string
     value: number
+    practice?: number
     delta?: number
 }
 
@@ -28,6 +29,7 @@ export type GrowthCategory = {
     id: string
     name: string
     score: number
+    explanation?: string
     confidence: number
     scored: number
     total: number

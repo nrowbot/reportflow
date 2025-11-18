@@ -24,6 +24,8 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
         const linked = (detail.sectionId && sectionLookup[detail.sectionId]) || sectionLookup[detail.id]
         return linked?.text || detail.text || ''
     }
+    
+    const kpiValues = kpis.map((k) => (k.practice ? `${k.value}% vs ${k.practice}% (${clientName})` : `${k.value}%`))
 
     return (
         <html>
@@ -61,7 +63,7 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                     .summary-details-label{ font-weight:600; text-align:left; }
                     .summary-note-inline{ font-size:9px; color:#475569; text-align:right; white-space:nowrap; }
                     .summary-focus{ display:flex; align-items:center; gap:6px; }
-                    .summary-badge{ width:25px; height:25px; border-radius:50%; background:rgba(4,120,87,0.15); color:#065f46; font-weight:600; display:flex; align-items:center; justify-content:center; font-size:12px; border:1px solid rgba(4,120,87,0.3); }
+                    .summary-badge{ flex-shrink: 0; width:25px; height:25px; border-radius:50%; background:rgba(4,120,87,0.15); color:#065f46; font-weight:600; display:flex; align-items:center; justify-content:center; font-size:12px; border:1px solid rgba(4,120,87,0.3); }
                     .summary-copy{ margin:0; font-size:9.25px; color:#111; line-height:1.3; }
                     .summary-profit{ text-align:right; font-weight:600; color:#047857; white-space:nowrap; }
                     .section{ page-break-inside: avoid; margin: 10px 0; }
@@ -79,16 +81,16 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                 </header>
                 <main>
                     <div className="kpi">
-                        {kpis.map((k) => (
+                        {kpis.map((k, i) => (
                             <div className="kpi-card" key={k.name}>
                                 <strong>{k.name}</strong>
-                                <GradientProgressBar value={k.value} height={12} />
+                                <GradientProgressBar value={k.value} height={12} gradientString={kpiValues[i]} />
                             </div>
                         ))}
                     </div>
-                    <p className="profit-callout">
+                    {/* <p className="profit-callout">
                         Additional profitability a top 10% practice captures averages <strong>$162,548</strong> per year.
-                    </p>
+                    </p> */}
                     {questionSections.length > 0 && (
                         <>
                             <h2>Key Questions</h2>
@@ -126,7 +128,7 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                                             </td>
                                             <td>
                                                 <div className="category-score">
-                                                    <GradientBar value={category.score} height={10} trackColor="#e2e8f0" />
+                                                    <GradientBar value={category.score} gradientString={category.explanation} height={10} trackColor="#e2e8f0" />
                                                 </div>
                                             </td>
                                             <td>{category.confidence}%</td>
@@ -150,11 +152,11 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                                     <tr>
                                         <th className="summary-details-header">
                                             <span className="summary-details-label">Summary Details</span>
-                                            <span className="summary-note-inline">
+                                            {/* <span className="summary-note-inline">
                                                 * Ask about our Profit Accelerator to turn these projected gains into your actual profit.
-                                            </span>
+                                            </span> */}
                                         </th>
-                                        <th className="summary-profit">Avg Profit ↗</th>
+                                        {/* <th className="summary-profit">Avg Profit ↗</th> */}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -166,9 +168,9 @@ export function Report({ clientName, date, kpis, sections, growthCategories, sum
                                                     <p className="summary-copy">{resolveSummaryText(detail)}</p>
                                                 </div>
                                             </td>
-                                            <td className="summary-profit">
+                                            {/* <td className="summary-profit">
                                                 {detail.avgProfit != null ? currencyFormatter.format(detail.avgProfit) : '—'}
-                                            </td>
+                                            </td> */}
                                         </tr>
                                     ))}
                                 </tbody>

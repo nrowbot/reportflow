@@ -92,10 +92,19 @@ const buildDrilldownTable = (text: string): DrilldownTable => {
         throw new Error('CSV missing data rows')
     }
 
+    const scoreColumnIndex = headers.findIndex((header) => header.trim().toLowerCase() === 'score')
+    const filteredRows =
+        scoreColumnIndex === -1
+            ? dataRows
+            : dataRows.filter((row) => {
+                  const cell = row[scoreColumnIndex] ?? ''
+                  return cell.length > 0
+        })
+
     return {
         title,
         columns: headers,
-        rows: dataRows,
+        rows: filteredRows,
     }
 }
 
